@@ -1,46 +1,36 @@
 package com.example.parkminhyun.mobileprogramming_practice;
 
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 
 
 public class MainActivity extends AppCompatActivity {
-    ScrollView scrollView;
+
     ImageView imageView;
-    BitmapDrawable bitmap;
+    ImageView imageView2;
+    int imageIndex= 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        scrollView= (ScrollView) findViewById(R.id.scrollView);
         imageView= (ImageView) findViewById(R.id.imageView);
-        scrollView.setHorizontalScrollBarEnabled(true);
-        Resources res = getResources();
-        bitmap = (BitmapDrawable) res.getDrawable(R.drawable.sample1);
-        int bitmapWidth= bitmap.getIntrinsicWidth();
-        int bitmapHeight= bitmap.getIntrinsicHeight();
-        imageView.setImageDrawable(bitmap);
-        imageView.getLayoutParams().width = bitmapWidth;
-        imageView.getLayoutParams().height = bitmapHeight;
+        imageView2 = (ImageView) findViewById(R.id.imageView2);
     }
-
     public void onButton1Clicked(View v) {
         changeImage();
     }
-
     private void changeImage() {
-        Resources res = getResources();
-        bitmap = (BitmapDrawable) res.getDrawable(R.drawable.sample0);
-        int bitmapWidth= bitmap.getIntrinsicWidth();
-        int bitmapHeight= bitmap.getIntrinsicHeight();
-        imageView.setImageDrawable(bitmap);
-        imageView.getLayoutParams().width = bitmapWidth;
-        imageView.getLayoutParams().height = bitmapHeight;
+        if (imageIndex== 0) {
+            imageView.setVisibility(View.VISIBLE);
+            imageView2.setVisibility(View.INVISIBLE);
+            imageIndex= 1;
+        } else if (imageIndex== 1) {
+            imageView.setVisibility(View.INVISIBLE);
+            imageView2.setVisibility(View.VISIBLE);
+            imageIndex= 0;
+        }
     }
 }
