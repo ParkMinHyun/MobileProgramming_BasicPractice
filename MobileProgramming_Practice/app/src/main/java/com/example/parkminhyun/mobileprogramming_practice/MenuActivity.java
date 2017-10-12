@@ -5,12 +5,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+
+        Intent intent = getIntent();
+        Toast.makeText(getApplicationContext(),intent.getExtras().getString("hi"),Toast.LENGTH_LONG).show();
+
+
         Button button= (Button) findViewById(R.id.button2);// 버튼객체참조
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

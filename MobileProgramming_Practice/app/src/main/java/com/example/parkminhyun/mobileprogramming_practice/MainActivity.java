@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public void onButton1Clicked(View v) {
 // 또다른액티비티를띄우기위한인텐트객체생성
         Intent intent= new Intent(getApplicationContext(), MenuActivity.class);
+        intent.putExtra("hi","ABC");
         startActivityForResult(intent, REQUEST_CODE_MENU);// 액티비티띄우기
     }
 
