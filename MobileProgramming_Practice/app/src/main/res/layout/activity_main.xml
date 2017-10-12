@@ -11,24 +11,22 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="onButton1Clicked"
-        android:text="이미지바꾸기" />
+        android:text="이미지바꾸어보여주기" />
 
-    <FrameLayout
+    <HorizontalScrollView
+        android:id="@+id/horScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sample0"
-            android:visibility="invisible" />
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sample1"
-            android:visibility="visible" />
-    </FrameLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+    </HorizontalScrollView>
 </LinearLayout>
