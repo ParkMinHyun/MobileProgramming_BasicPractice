@@ -10,6 +10,7 @@ import android.widget.ScrollView;
 public class MainActivity extends AppCompatActivity {
     ScrollView scrollView;
     ImageView imageView;
+    ImageView imageView2;
     BitmapDrawable bitmap;
 
     @Override
@@ -18,13 +19,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         imageView = (ImageView) findViewById(R.id.imageView);
+        imageView2 = (ImageView) findViewById(R.id.imageView2);
+
         scrollView.setHorizontalScrollBarEnabled(true);
         Resources res = getResources();
         bitmap = (BitmapDrawable) res.getDrawable(R.drawable.sample1);
         int bitmapWidth = bitmap.getIntrinsicWidth();
         int bitmapHeight = bitmap.getIntrinsicHeight();
+
         imageView.setImageDrawable(bitmap);
         imageView.getLayoutParams().width = bitmapWidth;
         imageView.getLayoutParams().height = bitmapHeight;
+
+
+        bitmap = (BitmapDrawable) res.getDrawable(R.drawable.sample0);
+        int bitmapWidth2 = bitmap.getIntrinsicWidth();
+        int bitmapHeight2 = bitmap.getIntrinsicHeight();
+
+        imageView2.setImageDrawable(bitmap);
+        imageView2.getLayoutParams().width = bitmapWidth;
+        imageView2.getLayoutParams().height = bitmapHeight;
     }
 }
