@@ -11,6 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="onButton1Clicked"
-        android:text="MenuActivity 이동!" />
+        android:text="전화 이동!" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/editText"
+        android:text="tel:010-7727-1234"
+        android:textSize="18dp"/>
 </LinearLayout>
