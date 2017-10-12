@@ -1,43 +1,33 @@
 package com.example.parkminhyun.mobileprogramming_practice;
 
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
-import android.widget.ScrollView;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    ScrollView scrollView;
-    ImageView imageView;
-    ImageView imageView2;
-    BitmapDrawable bitmap;
-
+    public static final int REQUEST_CODE_MENU = 101;// 다른액티비티를띄우기위한요청코드정의
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
-        imageView = (ImageView) findViewById(R.id.imageView);
-        imageView2 = (ImageView) findViewById(R.id.imageView2);
+    }
+    public void onButton1Clicked(View v) {
+// 또다른액티비티를띄우기위한인텐트객체생성
+        Intent intent= new Intent(getApplicationContext(), MenuActivity.class);
+        startActivityForResult(intent, REQUEST_CODE_MENU);// 액티비티띄우기
+    }
 
-        scrollView.setHorizontalScrollBarEnabled(true);
-        Resources res = getResources();
-        bitmap = (BitmapDrawable) res.getDrawable(R.drawable.sample1);
-        int bitmapWidth = bitmap.getIntrinsicWidth();
-        int bitmapHeight = bitmap.getIntrinsicHeight();
-
-        imageView.setImageDrawable(bitmap);
-        imageView.getLayoutParams().width = bitmapWidth;
-        imageView.getLayoutParams().height = bitmapHeight;
-
-
-        bitmap = (BitmapDrawable) res.getDrawable(R.drawable.sample0);
-        int bitmapWidth2 = bitmap.getIntrinsicWidth();
-        int bitmapHeight2 = bitmap.getIntrinsicHeight();
-
-        imageView2.setImageDrawable(bitmap);
-        imageView2.getLayoutParams().width = bitmapWidth;
-        imageView2.getLayoutParams().height = bitmapHeight;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode== REQUEST_CODE_MENU) {
+            Toast.makeText(getApplicationContext(), "onActivityResult메소드호출됨. 요청코드: " + requestCode+ ", 결과코드: " + resultCode, Toast.LENGTH_LONG).show();
+            if (resultCode== RESULT_OK) {
+                String name = data.getExtras().getString("name");
+                Toast.makeText(getApplicationContext(), "응답으로전달된name : " + name, Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }
