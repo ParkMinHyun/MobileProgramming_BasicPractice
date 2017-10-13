@@ -3,6 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#ff3366cc">
 
     <Button
@@ -11,10 +12,9 @@
         android:layout_height="48dp"
         android:onClick="onButton1Clicked"
         android:text="메뉴화면 띄우기"/>
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="119dp"
-        android:layout_height="48dp"
-        android:onClick="onButton1Clicked"
-        android:text="메뉴화면 띄우기"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
 </LinearLayout>
