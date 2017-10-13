@@ -28,22 +28,6 @@ public class MenuActivity extends AppCompatActivity {
                 finish();
             }
         });
-        // 메인액티비티로부터전달받은인텐트를확인합니다.
-        Intent intent= getIntent();
-        processIntent(intent);
     }
 
-    /**
-     * 전달된인텐트처리
-     */
-    private void processIntent(Intent intent) {
-        if (intent != null) {
-            // 인텐트안의번들객체를참조합니다.
-            Bundle bundle= intent.getExtras();
-            // 번들객체안의SimpleData객체를참조합니다.
-            SimpleData data = (SimpleData) bundle.getParcelable(KEY_SIMPLE_DATA);
-            // 텍스트뷰에값을보여줍니다.
-            textView.setText("전달받은데이터\nNumber: " + data.getNumber() + "\nMessage: " + data.getMessage());
-        }
-    }
 }

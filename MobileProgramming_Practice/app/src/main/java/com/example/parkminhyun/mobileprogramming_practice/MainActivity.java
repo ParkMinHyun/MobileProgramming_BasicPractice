@@ -4,21 +4,45 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    public static final int REQUEST_CODE_MENU = 101;
-
-    public static final String KEY_SIMPLE_DATA = "data";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(this, "onCreate호출됨", Toast.LENGTH_LONG).show();
     }
+
     public void onButton1Clicked(View v) {
-        Intent intent= new Intent(getApplicationContext(), MenuActivity.class);
-        String a = "Heelow";
-        SimpleData data = new SimpleData(100, a); // SimpleData객체생성
-        intent.putExtra(KEY_SIMPLE_DATA, data);// 인텐트에부가데이터로넣기
-        startActivityForResult(intent, REQUEST_CODE_MENU);
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(this, "onStart호출됨", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(this, "onStop호출됨", Toast.LENGTH_LONG).show();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this, "onDestroy호출됨", Toast.LENGTH_LONG).show();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this, "onPause호출됨", Toast.LENGTH_LONG).show();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "onResume호출됨", Toast.LENGTH_LONG).show();
     }
 }
