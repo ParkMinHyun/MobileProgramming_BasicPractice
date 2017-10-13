@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#ff3366cc">
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="219dp"
+        android:layout_height="48dp"
         android:onClick="onButton1Clicked"
-        android:text="전화 이동!" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/editText"
-        android:text="tel:010-7727-1234"
-        android:textSize="18dp"/>
+        android:text="메뉴화면 띄우기"/>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:onClick="onButton1Clicked"
+        android:text="메뉴화면 띄우기"/>
 </LinearLayout>

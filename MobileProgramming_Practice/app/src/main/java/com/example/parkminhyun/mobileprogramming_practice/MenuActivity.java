@@ -5,47 +5,45 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity {
-    EditText editText;
-    int num = 0;
+    TextView textView;
+    public static final String KEY_SIMPLE_DATA = "data";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-
-        Intent intent = getIntent();
-        Toast.makeText(getApplicationContext(),intent.getExtras().getString("hi"),Toast.LENGTH_LONG).show();
-
-        editText = (EditText) findViewById(R.id.editText2);
-        Button button= (Button) findViewById(R.id.button2);// 버튼객체참조
+        textView = (TextView) findViewById(R.id.textView);
+        Button button= (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                Intent intent= new Intent(getApplicationContext(),MenuActivity.class); // 인텐트객체생성하고name의값을부가데이터로넣기
-                intent.setFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-//                finish();
-//                if(editText.getText().length() == 0)
-//                    setResult(RESULT_CANCELED);
-//                else {
-//                    intent.putExtra("name", "mike");
-//                    setResult(RESULT_OK, intent); // 응답보내기
-//                }
-//                finish();// 현재액티비티없애기
+                // 인텐트객체를만듭니다.
+                Intent intent= new Intent();
+                intent.putExtra("name", "mike");
+                // 응답을전달하고이액티비티를종료합니다.
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
+        // 메인액티비티로부터전달받은인텐트를확인합니다.
+        Intent intent= getIntent();
+        processIntent(intent);
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-
-        Toast.makeText(getApplicationContext(),intent.toString(),Toast.LENGTH_LONG).show();
-        editText.setText(String.valueOf(num));
-        num += 1;
+    /**
+     * 전달된인텐트처리
+     */
+    private void processIntent(Intent intent) {
+        if (intent != null) {
+            // 인텐트안의번들객체를참조합니다.
+            Bundle bundle= intent.getExtras();
+            // 번들객체안의SimpleData객체를참조합니다.
+            SimpleData data = (SimpleData) bundle.getParcelable(KEY_SIMPLE_DATA);
+            // 텍스트뷰에값을보여줍니다.
+            textView.setText("전달받은데이터\nNumber: " + data.getNumber() + "\nMessage: " + data.getMessage());
+        }
     }
 }
