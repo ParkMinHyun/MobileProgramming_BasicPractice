@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
     EditText editText;
+    int num = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,15 +25,27 @@ public class MenuActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent intent= new Intent(); // 인텐트객체생성하고name의값을부가데이터로넣기
-                if(editText.getText().length() == 0)
-                    setResult(RESULT_CANCELED);
-                else {
-                    intent.putExtra("name", "mike");
-                    setResult(RESULT_OK, intent); // 응답보내기
-                }
-                finish();// 현재액티비티없애기
+                Intent intent= new Intent(getApplicationContext(),MenuActivity.class); // 인텐트객체생성하고name의값을부가데이터로넣기
+                intent.setFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+//                finish();
+//                if(editText.getText().length() == 0)
+//                    setResult(RESULT_CANCELED);
+//                else {
+//                    intent.putExtra("name", "mike");
+//                    setResult(RESULT_OK, intent); // 응답보내기
+//                }
+//                finish();// 현재액티비티없애기
             }
         });
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        Toast.makeText(getApplicationContext(),intent.toString(),Toast.LENGTH_LONG).show();
+        editText.setText(String.valueOf(num));
+        num += 1;
     }
 }
