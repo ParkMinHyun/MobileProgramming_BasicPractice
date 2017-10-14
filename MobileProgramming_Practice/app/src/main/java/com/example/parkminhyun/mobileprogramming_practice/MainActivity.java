@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "onResume호출됨", Toast.LENGTH_SHORT).show();
         restoreState();// 설정정보에저장된데이터를복원
     }
+
     protected void restoreState() {
         SharedPreferences pref= getSharedPreferences("pref", Activity.MODE_PRIVATE);
         if ((pref!= null) && (pref.contains("name")) ){
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             nameInput.setText(name);
         }
     }
+
     protected void saveState() {
         SharedPreferences pref= getSharedPreferences("pref", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();

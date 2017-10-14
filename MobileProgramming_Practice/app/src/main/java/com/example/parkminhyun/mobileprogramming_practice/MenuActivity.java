@@ -22,7 +22,6 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 인텐트객체를만듭니다.
                 Intent intent= new Intent(getApplicationContext(),ThirdActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
 //                intent.putExtra("name", "mike");
 //                // 응답을전달하고이액티비티를종료합니다.
