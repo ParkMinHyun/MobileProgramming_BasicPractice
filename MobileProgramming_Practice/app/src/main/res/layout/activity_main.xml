@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/studentId1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="122179" />
 
@@ -30,4 +30,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="박민현" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#ff0000">
+
+
+        <Button
+            android:id="@+id/button33"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="30dp"
+            android:onClick="onButton1Clicked"
+            android:text="메뉴화면 띄우기"/>
+
+        <EditText
+            android:id="@+id/editText33"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+    </LinearLayout>
 </LinearLayout>
