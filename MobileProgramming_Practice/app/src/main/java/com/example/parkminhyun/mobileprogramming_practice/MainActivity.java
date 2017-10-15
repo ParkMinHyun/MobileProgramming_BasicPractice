@@ -7,9 +7,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     EditText nameInput;
+    TextView studentId;
+    TextView studentName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toast.makeText(this, "onCreate호출됨", Toast.LENGTH_SHORT).show();
         nameInput = (EditText) findViewById(R.id.editText);
+        studentId = (TextView) findViewById(R.id.studentId1);
+        studentName = (TextView) findViewById(R.id.studentName1);
     }
 
     public void onButton1Clicked(View v) {
@@ -68,7 +74,13 @@ public class MainActivity extends AppCompatActivity {
     protected void saveState() {
         SharedPreferences pref= getSharedPreferences("pref", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString("name", nameInput.getText().toString() );
+        String A = nameInput.getText().toString();
+        A += "&";
+        A += studentId.getText().toString();
+        A += "&";
+        A += studentName.getText().toString();
+
+        editor.putString("name", A );
         editor.commit();
     }
 
