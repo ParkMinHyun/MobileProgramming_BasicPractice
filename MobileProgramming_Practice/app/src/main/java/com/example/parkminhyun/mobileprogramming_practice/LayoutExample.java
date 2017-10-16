@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class FrameLayoutExample extends AppCompatActivity {
+public class LayoutExample extends AppCompatActivity {
 
     ImageView imageView1;
     ImageView imageView2;
@@ -19,7 +19,7 @@ public class FrameLayoutExample extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_frame_layout_example);
+        setContentView(R.layout.activity_linear_layout_example);
 
         imageView1 = (ImageView) findViewById(R.id.imageView);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
