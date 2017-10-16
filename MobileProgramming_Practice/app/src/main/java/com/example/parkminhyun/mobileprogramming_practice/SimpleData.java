@@ -59,7 +59,12 @@ public class SimpleData implements Parcelable{
         this.message = message;
     }
 }
-
+///////////////////Parcelable Data 받기////////////////////////////////////////////////////
+//
+//    Bundle bundle= getIntent().getExtras();
+//    SimpleData data = (SimpleData) bundle.getParcelable(KEY_SIMPLE_DATA);
+//        textView.setText("전달받은데이터\nNumber: " + data.getNumber() + "\nMessage: " + data.getMessage());
+//
 ///////////////////////////////////////////////////////////////////////////////////////
 //
 //    public void onButton1Clicked(View v) {
