@@ -1,5 +1,7 @@
 package com.example.parkminhyun.mobileprogramming_practice;
 
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +14,7 @@ public class FrameLayoutExample extends AppCompatActivity {
     ImageView imageView2;
     Button upBtn;
     Button downBtn;
+    BitmapDrawable bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +27,31 @@ public class FrameLayoutExample extends AppCompatActivity {
         downBtn = (Button) findViewById(R.id.down);
 
 
-        imageView1.setVisibility(View.INVISIBLE);
-        imageView2.setVisibility(View.INVISIBLE);
     }
 
     public void onUpButtonClicked(View v) {
-            imageView1.setVisibility(View.VISIBLE);
-            imageView2.setVisibility(View.INVISIBLE);
+//        imageView1.setVisibility(View.VISIBLE);
+//        imageView2.setVisibility(View.INVISIBLE);
+
+        Resources res = getResources();
+        bitmap = (BitmapDrawable) res.getDrawable(R.drawable.sample0);
+        int bitmapWidth= bitmap.getIntrinsicWidth();
+        int bitmapHeight= bitmap.getIntrinsicHeight();
+        imageView1.setImageDrawable(bitmap);
+        imageView1.getLayoutParams().width = bitmapWidth;
+        imageView1.getLayoutParams().height = bitmapHeight;
     }
 
     public void onDownButtonClicked(View v) {
-            imageView2.setVisibility(View.VISIBLE);
-            imageView1.setVisibility(View.INVISIBLE);
+//        imageView2.setVisibility(View.VISIBLE);
+//        imageView1.setVisibility(View.INVISIBLE);
+
+        Resources res = getResources();
+        bitmap = (BitmapDrawable) res.getDrawable(R.drawable.sample1);
+        int bitmapWidth= bitmap.getIntrinsicWidth();
+        int bitmapHeight= bitmap.getIntrinsicHeight();
+        imageView1.setImageDrawable(bitmap);
+        imageView1.getLayoutParams().width = bitmapWidth;
+        imageView1.getLayoutParams().height = bitmapHeight;
     }
 }
