@@ -52,8 +52,6 @@ public class ThirdActivity extends AppCompatActivity {
             editText.setText(data[0]);
             studentId.setText(data[1]);
             studentName.setText(data[2]);
-
-
         }
     }
 }
