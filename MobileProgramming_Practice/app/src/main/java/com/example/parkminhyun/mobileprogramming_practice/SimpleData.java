@@ -59,13 +59,21 @@ public class SimpleData implements Parcelable{
         this.message = message;
     }
 }
-///////////////////Parcelable Data 받기////////////////////////////////////////////////////
+
+///////////////////Parcelable Data 전송////////////////////////////////////////////////////
 //
+//        String a = "Heelow";
+//        SimpleData data = new SimpleData(100, a); // SimpleData객체생성
+//        intent.putExtra(KEY_SIMPLE_DATA, data);// 인텐트에부가데이터로넣기
+//        startActivityForResult(intent, REQUEST_CODE_MENU);
+//
+///////////////////Parcelable Data 받기////////////////////////////////////////////////////
+//ㅅ
 //    Bundle bundle= getIntent().getExtras();
 //    SimpleData data = (SimpleData) bundle.getParcelable(KEY_SIMPLE_DATA);
 //        textView.setText("전달받은데이터\nNumber: " + data.getNumber() + "\nMessage: " + data.getMessage());
 //
-///////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////SetFlag/////////////////////////////////////////////////////
 //
 //    public void onButton1Clicked(View v) {
 //        Intent intent = new Intent(this, MenuActivity.class);
@@ -141,8 +149,8 @@ public class SimpleData implements Parcelable{
 //        super.onNewIntent(intent);
 //    }
 //}
-///////////////////////////////////////////////////////////////////////////////////////
-//    부분 Layout
+/////////////////////////////////부분 Layout//////////////////////////////////////////////
+//
 //    LinearLayout container;
 //        container = (LinearLayout)findViewById(R.id.container);
 //                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -158,7 +166,7 @@ public class SimpleData implements Parcelable{
 //        startActivityForResult(intent, REQUEST_CODE_MENU);// 액티비티띄우기
 //    }
 //    @Override
-//    protected void onActivityResult(intrequestCode, intresultCode, Intent data) {
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
 //        if (requestCode== REQUEST_CODE_MENU) {
 //            Toast.makeText(getApplicationContext(), "onActivityResult메소드호출됨. 요청코드: " + requestCode+ ", 결과코드: " + resultCode, Toast.LENGTH_LONG).show();
