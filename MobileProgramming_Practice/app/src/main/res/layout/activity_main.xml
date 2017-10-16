@@ -1,54 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ff3366cc">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="219dp"
-        android:layout_height="48dp"
-        android:onClick="onButton1Clicked"
-        android:text="메뉴화면 띄우기"/>
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"/>
-
-
     <TextView
-        android:id="@+id/studentId1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="122179" />
-
-    <TextView
-        android:id="@+id/studentName1"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="박민현" />
+        android:text="Main 화면"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="102dp" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#ff0000">
+    <Button
+        android:id="@+id/infoAccessbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="개인정보 입력하기"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintLeft_toRightOf="@+id/menuAccessbtn"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="231dp" />
 
-
-        <Button
-            android:id="@+id/button33"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            android:layout_marginRight="30dp"
-            android:onClick="onButton1Clicked"
-            android:text="메뉴화면 띄우기"/>
-
-        <EditText
-            android:id="@+id/editText33"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"/>
-    </LinearLayout>
-
-</LinearLayout>
+    <Button
+        android:id="@+id/menuAccessbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="MenuActivity 들어가기"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="231dp" />
+</android.support.constraint.ConstraintLayout>

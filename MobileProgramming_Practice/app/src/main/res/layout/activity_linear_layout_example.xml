@@ -32,7 +32,8 @@
             android:id="@+id/up"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
+            android:layout_toLeftOf="@+id/down"
+            android:layout_marginRight="20dp"
             android:onClick="onUpButtonClicked"
             android:text="▲" />
 
