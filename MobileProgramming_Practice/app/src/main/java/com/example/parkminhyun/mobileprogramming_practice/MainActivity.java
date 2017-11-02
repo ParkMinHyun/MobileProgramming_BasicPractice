@@ -1,45 +1,55 @@
 package com.example.parkminhyun.mobileprogramming_practice;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
-    EditText editText;
-
+    boolean isPageOpen= false;/** 페이지가열려있는지알기위한플래그*/
+    Animation translateLeftAnim;/** 애니메이션객체*/
+    Animation translateRightAnim;
+    LinearLayout page;/** 슬라이딩으로보여지는페이지레이아웃*/
+    Button button;/** 버튼*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        editText= (EditText) findViewById(R.id.editText);
-
-        Intent passedIntent= getIntent();
-        processIntent(passedIntent);
+        button = (Button) findViewById(R.id.button);
+        page = (LinearLayout) findViewById(R.id.page);// 슬라이딩으로보여질레이아웃객체참조
+// 애니메이션객체로딩
+        translateLeftAnim= AnimationUtils.loadAnimation(this, R.anim.translate_left);
+        translateRightAnim= AnimationUtils.loadAnimation(this, R.anim.translate_right);
+// 애니메이션객체에리스너설정
+        SlidingPageAnimationListener animListener= new SlidingPageAnimationListener();
+        translateLeftAnim.setAnimationListener(animListener);
+        translateRightAnim.setAnimationListener(animListener);
     }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        processIntent(intent);
-        super.onNewIntent(intent);
-    }
-
-    private void processIntent(Intent intent) {
-        if (intent != null) {
-            String command = intent.getStringExtra("command");
-            String name = intent.getStringExtra("name");
-            Toast.makeText(this, "command : " + command + ", name : " + name, Toast.LENGTH_LONG).show();
+    public void onButton1Clicked(View v) {
+        if (isPageOpen) {// 애니메이션적용
+            page.startAnimation(translateRightAnim);
+        } else {
+            page.setVisibility(View.VISIBLE);
+            page.startAnimation(translateLeftAnim);
         }
     }
-
-    public void onButton1Click(View v){
-        String name = editText.getText().toString();
-        Intent intent= new Intent(this, MyService.class);
-        intent.putExtra("command", "show");
-        intent.putExtra("name", name);
-        startService(intent);
-    }
-
+    /** 애니메이션리스너정의*/
+    private class SlidingPageAnimationListener implements Animation.AnimationListener{
+/** 애니메이션이끝날때호출되는메소드*/
+        public void onAnimationEnd(Animation animation) {
+            if (isPageOpen) {
+                page.setVisibility(View.INVISIBLE);
+                button.setText("Open");
+                isPageOpen= false;
+            } else {
+                button.setText("Close");
+                isPageOpen= true;
+            }
+        }
+    public void onAnimationRepeat(Animation animation) {}
+    public void onAnimationStart(Animation animation) {}
+}
 }
