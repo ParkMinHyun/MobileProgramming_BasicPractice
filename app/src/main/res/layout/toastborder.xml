@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
+    android:id="@+id/toast_layout_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:padding="10dp">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
-
-    <Button
-        android:id="@+id/button"
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="gdgd" />
-
+        android:background="@drawable/toast"
+        android:padding="20dp"
+        android:textSize="32dp" />
 </LinearLayout>
