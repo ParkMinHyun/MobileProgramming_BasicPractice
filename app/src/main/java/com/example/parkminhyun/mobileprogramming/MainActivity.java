@@ -3,14 +3,18 @@ package com.example.parkminhyun.mobileprogramming;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
     GestureDetector detector;// 제스처디텍터객체선언
+    boolean backFlag = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,4 +87,22 @@ public class MainActivity extends AppCompatActivity {
     public void println(String data) {
         textView.append(data + "\n");
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        // 시스템BACK 버튼이눌렸을경우토스트메시지보여주기
+        if(keyCode== KeyEvent.KEYCODE_BACK) {
+
+            if(backFlag)
+                this.finish();
+
+            backFlag = true;
+
+            Toast.makeText(this, "시스템BACK 버튼이눌렸습니다.", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return false;
+    }
+
 }
