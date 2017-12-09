@@ -2,6 +2,7 @@ package com.example.parkminhyun.mobileprogramming;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
-
+    GestureDetector detector;// 제스처디텍터객체선언
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 뷰를 터치했을때 이벤트를 전달 받을 리스너 등록
         View view= findViewById(R.id.view);
+        View view2 = findViewById(R.id.view2);
 
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -36,6 +38,46 @@ public class MainActivity extends AppCompatActivity {
                 else if (action == MotionEvent.ACTION_UP) {
                     println("손가락뗌: " + curX+ ", " + curY);
                 }return true;}
+        });
+
+        // 뷰를터치했을때발생하는터치이벤트를제스처디텍터로전달
+        view2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                detector.onTouchEvent(motionEvent);
+                return true;
+            }
+        });
+
+        detector = new GestureDetector(this, new GestureDetector.OnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent motionEvent) {
+                println("onDown() 호출됨.");
+                return true;
+            }
+            @Override
+            public void onShowPress(MotionEvent motionEvent) {
+                println("onShowPress() 호출됨.");
+            }
+            @Override
+            public boolean onSingleTapUp(MotionEvent motionEvent) {
+                println("onSingleTapUp() 호출됨.");
+                return true;
+            }
+            @Override
+            public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+                println("onScroll() 호출됨: " + v + ", " + v1);
+                return true;
+            }
+            @Override
+            public void onLongPress(MotionEvent motionEvent) {
+                println("onLongPress() 호출됨.");
+            }
+            @Override
+            public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+                println("onFling() 호출됨: " + v + ", " + v1);
+                return true;
+            }
         });
     }
     public void println(String data) {
