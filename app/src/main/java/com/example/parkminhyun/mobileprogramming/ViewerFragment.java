@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 public class ViewerFragment extends Fragment {
     ImageView imageView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class ViewerFragment extends Fragment {
         imageView= (ImageView) rootView.findViewById(R.id.imageView);
         return rootView;
     }
+
     public void setImage(int resId) {
         imageView.setImageResource(resId);
     }
