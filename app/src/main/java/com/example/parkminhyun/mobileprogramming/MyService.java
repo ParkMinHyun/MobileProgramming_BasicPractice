@@ -10,7 +10,7 @@ public class MyService extends Service {
     final static String ACTION_UPDATE_CNT = "UPDATE_CNT";
 
     CountServiceThread countServiceThread;
-    int cnt;
+    double cnt;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -42,18 +42,18 @@ public class MyService extends Service {
 
         @Override
         public void run() {
-            cnt = 0;
+            cnt = 0.0;
             running = true;
             while (running) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10);
 
                     Intent intent = new Intent();
                     intent.setAction(ACTION_UPDATE_CNT);
                     intent.putExtra(KEY_INT_FROM_SERVICE, cnt);
                     sendBroadcast(intent);
 
-                    cnt++;
+                    cnt += 0.01;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

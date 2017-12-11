@@ -24,6 +24,16 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     CountReceiver countReceiver;
 
     Intent serviceIntent;
+
+    private static Fragment1 instance;
+
+    public static Fragment1 getInstance(){
+        if(instance == null)
+            instance = new Fragment1();
+
+        return instance;
+    }
+
     @Override
     public void onStart() {
         countReceiver = new CountReceiver();
@@ -69,8 +79,8 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if(action.equals(MyService.ACTION_UPDATE_CNT)){
-                int int_from_service = intent.getIntExtra(MyService.KEY_INT_FROM_SERVICE, 0);
-                timeTextView.setText(String.valueOf(int_from_service));
+                double double_from_service = intent.getDoubleExtra(MyService.KEY_INT_FROM_SERVICE, 0);
+                timeTextView.setText(String.format("%.2f",double_from_service));
             }
         }
     }
