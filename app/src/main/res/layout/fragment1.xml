@@ -6,8 +6,21 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/f1button"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="첫번째" />
+        android:text="시작하기" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="종료하기" />
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:textSize="25dp"
+        android:id="@+id/timeTextView"
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
