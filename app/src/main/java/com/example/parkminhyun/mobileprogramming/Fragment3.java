@@ -17,18 +17,14 @@ public class Fragment3 extends Fragment {
 
 
     Button showButton;
-    public static interface changeMessageCallback {
-        public void onMessageChange();
 
-    }
-
-    public changeMessageCallback callback;
+    public ChangeMessageCallback callback;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof changeMessageCallback){
-            callback = (changeMessageCallback) context;
+        if (context instanceof ChangeMessageCallback){
+            callback = (ChangeMessageCallback) context;
         }
     }
 

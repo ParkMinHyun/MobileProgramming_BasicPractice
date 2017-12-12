@@ -20,7 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements Fragment3.changeMessageCallback {
+public class MainActivity extends AppCompatActivity implements ChangeMessageCallback {
     Toolbar toolbar;
     Fragment1 fragment1;
     Fragment2 fragment2;
