@@ -134,14 +134,16 @@ public class MainActivity extends AppCompatActivity implements ChangeMessageCall
         }
     };
 
+    public static StringBuilder a = new StringBuilder("종료하기");
+
     private void search() {
         String searchString = editText.getEditableText().toString();
         Toast.makeText(this, "검색어: " + searchString, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onMessageChange() {
-        Button button = (Button)findViewById(R.id.showButton);
-        button.setText(editText.getText());
+    public void onMessageChange(String text) {
+        a = new StringBuilder(text);
+        fragment1.onMessageChange(text);
     }
 }

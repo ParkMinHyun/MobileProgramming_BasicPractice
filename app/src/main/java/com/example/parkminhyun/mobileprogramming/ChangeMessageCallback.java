@@ -5,5 +5,5 @@ package com.example.parkminhyun.mobileprogramming;
  */
 
 public interface ChangeMessageCallback {
-    public void onMessageChange();
+    public void onMessageChange(String text);
 }

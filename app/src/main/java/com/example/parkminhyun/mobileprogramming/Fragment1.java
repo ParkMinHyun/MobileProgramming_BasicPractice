@@ -6,17 +6,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by ParkMinHyun on 2017-12-11.
  */
 
-public class Fragment1 extends Fragment implements View.OnClickListener {
+public class Fragment1 extends Fragment implements View.OnClickListener{
 
     Button startButton, stopButton;
     TextView timeTextView;
@@ -43,6 +46,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         super.onStart();
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment1, container, false);
@@ -53,6 +57,8 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
 
         stopButton = (Button) rootView.findViewById(R.id.stopButton);
         stopButton.setOnClickListener(this);
+
+        stopButton.setText(MainActivity.a.toString());
         return rootView;
     }
 
@@ -72,6 +78,11 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                 serviceIntent = null;
                 break;
         }
+    }
+
+    public void onMessageChange(String text) {
+        Log.i("Text 확인", text);
+        stopButton.setText(text);
     }
 
     private class CountReceiver extends BroadcastReceiver {

@@ -37,7 +37,7 @@ public class Fragment3 extends Fragment {
             @Override
             public void onClick(View v) {
                 if (callback != null) {
-                    callback.onMessageChange();
+                    callback.onMessageChange(showButton.getText().toString());
                 }
             }
         });
