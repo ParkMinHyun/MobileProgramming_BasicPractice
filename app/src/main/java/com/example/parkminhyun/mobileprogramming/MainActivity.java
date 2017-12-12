@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Fragment3.changeMessageCallback {
     Toolbar toolbar;
     Fragment1 fragment1;
     Fragment2 fragment2;
@@ -136,5 +137,11 @@ public class MainActivity extends AppCompatActivity {
     private void search() {
         String searchString = editText.getEditableText().toString();
         Toast.makeText(this, "검색어: " + searchString, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMessageChange() {
+        Button button = (Button)findViewById(R.id.showButton);
+        button.setText(editText.getText());
     }
 }
